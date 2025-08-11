@@ -39,10 +39,10 @@ function App() {
 
   const tabs = [
     { id: 'main.py', name: 'main.py', icon: <Code size={14} /> },
-    { id: 'aws_services.py', name: 'aws_services.py', icon: <User size={14} /> },
+    { id: 'my_skills.py', name: 'my_skills.py', icon: <User size={14} /> },
     { id: 'work_experience.py', name: 'work_experience.py', icon: <Briefcase size={14} /> },
     { id: 'projects.py', name: 'projects.py', icon: <Folder size={14} /> },
-    { id: 'flask_app.py', name: 'flask_app.py', icon: <MessageSquare size={14} /> }
+    { id: 'contact.py', name: 'contact.py', icon: <MessageSquare size={14} /> }
   ];
 
   const projects = [
@@ -242,7 +242,7 @@ function App() {
           </div>
         );
 
-      case 'aws_services.py':
+      case 'my_skills.py':
         return (
           <div className="space-y-6">
             {/* Skills Overview Card */}
@@ -597,7 +597,7 @@ function App() {
           </div>
         );
 
-      case 'flask_app.py':
+      case 'contact.py':
         return (
           <div className="space-y-6">
             {/* Contact Info Card */}
@@ -933,7 +933,7 @@ function App() {
                 </div>
               )}
 
-              {activeTab === 'flask_app.py' && (
+              {activeTab === 'contact.py' && (
                 <div className="code-card">
                   <div className="code-card-header">
                     <MessageSquare size={16} />
