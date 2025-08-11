@@ -1,0 +1,50 @@
+import React from 'react';
+import { Github, Mail, FileText } from 'lucide-react';
+import { tabs } from '../../data/tabs';
+
+interface IDESidebarProps {
+  activeTab: string;
+  onTabChange: (tabId: string) => void;
+}
+
+const IDESidebar: React.FC<IDESidebarProps> = ({ activeTab, onTabChange }) => {
+  return (
+    <div className="ide-sidebar hidden lg:block">
+      <div className="ide-sidebar-section">
+        <div className="ide-sidebar-title">Explorer</div>
+        <div className="space-y-1">
+          {tabs.map((tab) => (
+            <div
+              key={tab.id}
+              className={`ide-sidebar-item flex items-center gap-2 ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => onTabChange(tab.id)}
+            >
+              {tab.icon}
+              <span>{tab.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="ide-sidebar-section">
+        <div className="ide-sidebar-title">Quick Actions</div>
+        <div className="space-y-1">
+          <div className="ide-sidebar-item flex items-center gap-2">
+            <Github size={14} />
+            <span>View GitHub</span>
+          </div>
+          <div className="ide-sidebar-item flex items-center gap-2">
+            <Mail size={14} />
+            <span>Send Email</span>
+          </div>
+          <div className="ide-sidebar-item flex items-center gap-2">
+            <FileText size={14} />
+            <span>Download Resume</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default IDESidebar;
