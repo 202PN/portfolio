@@ -3,18 +3,18 @@ import { IDEWindow } from './index';
 import { MainContent, SkillsContent, ExperienceContent, ProjectsContent, ContactContent } from './Content';
 import { IDESectionProps } from '../../types';
 
-const IDESection: React.FC<IDESectionProps> = ({ isDevMode, activeTab, onTabChange }) => {
+const IDESection: React.FC<IDESectionProps> = ({ isDevMode, activeTab, onTabChange, onToggleDevMode }) => {
   const renderContent = () => {
     switch (activeTab) {
       case 'main.py':
         return <MainContent />;
-      case 'aws_services.py':
+      case 'my_skills.py':
         return <SkillsContent />;
       case 'work_experience.py':
         return <ExperienceContent />;
       case 'projects.py':
         return <ProjectsContent />;
-      case 'flask_app.py':
+      case 'contact.py':
         return <ContactContent />;
       default:
         return <MainContent />;
@@ -32,7 +32,7 @@ const IDESection: React.FC<IDESectionProps> = ({ isDevMode, activeTab, onTabChan
                 <input
                   type="checkbox"
                   checked={isDevMode}
-                  onChange={(e) => onTabChange(e.target.checked ? 'main.py' : 'main.py')}
+                  onChange={(e) => onToggleDevMode(e.target.checked)}
                   className="toggle-input"
                 />
                 <span className="toggle-slider">

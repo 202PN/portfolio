@@ -40,10 +40,10 @@ export const CONFIG = {
     DEFAULT_TAB: 'main.py',
     TABS: [
       { id: 'main.py', name: 'main.py', icon: 'Code' },
-      { id: 'aws_services.py', name: 'aws_services.py', icon: 'User' },
+      { id: 'my_skills.py', name: 'my_skills.py', icon: 'User' },
       { id: 'work_experience.py', name: 'work_experience.py', icon: 'Briefcase' },
       { id: 'projects.py', name: 'projects.py', icon: 'Folder' },
-      { id: 'flask_app.py', name: 'flask_app.py', icon: 'MessageSquare' }
+      { id: 'contact.py', name: 'contact.py', icon: 'MessageSquare' }
     ]
   },
 

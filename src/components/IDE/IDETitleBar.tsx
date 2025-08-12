@@ -8,7 +8,7 @@ const IDETitleBar: React.FC = () => {
         <div className="ide-titlebar-button minimize"></div>
         <div className="ide-titlebar-button maximize"></div>
       </div>
-      <div className="ide-filename">portfolio-website</div>
+      <div className="ide-filename">pn-portfolio</div>
     </div>
   );
 };

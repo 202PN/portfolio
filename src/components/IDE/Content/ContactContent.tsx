@@ -57,7 +57,7 @@ const ContactContent: React.FC = () => {
               <Mail size={16} />
               Email Me
             </a>
-            <a href="#" className="ide-button secondary flex items-center gap-2">
+            <a href="https://linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="ide-button secondary flex items-center gap-2">
               <Linkedin size={16} />
               LinkedIn
             </a>

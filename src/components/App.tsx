@@ -11,7 +11,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentSection = getActiveSection(CONFIG.NAVIGATION.SECTIONS);
+      const currentSection = getActiveSection([...CONFIG.NAVIGATION.SECTIONS]);
       setActiveSection(currentSection);
     };
 
@@ -31,6 +31,10 @@ const App: React.FC = () => {
     setIsDevMode(mode);
   };
 
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId as any);
+  };
+
   const handleShowHangarStackModal = () => {
     setShowHangarStackModal(true);
   };
@@ -48,7 +52,8 @@ const App: React.FC = () => {
       <IDESection 
         isDevMode={isDevMode} 
         activeTab={activeTab} 
-        onTabChange={setActiveTab} 
+        onTabChange={handleTabChange}
+        onToggleDevMode={handleToggleDevMode}
       />
       
       {/* Simple Portfolio Section */}

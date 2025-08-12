@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Terminal, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, Terminal, ChevronDown, MapPin } from 'lucide-react';
 import { HeroProps } from '../types';
 
 const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
@@ -11,7 +11,7 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
         </div>
         
         <h1 className="hero-title mb-6">
-          Hi, I'm <span className="hero-name">Pete Nguyen</span>
+          Hi, I'm <span className="hero-name">Pete</span>
         </h1>
         
         <p className="hero-subtitle mb-8">
@@ -19,30 +19,10 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
           and solves complex problems with clean code.
         </p>
         
-        <div className="hero-technologies">
-          <div className="hero-tech-category">
-            <div className="hero-tech-title">Frontend</div>
-            <div className="hero-tech-items">
-              <span className="hero-tech-item">React</span>
-              <span className="hero-tech-item">TypeScript</span>
-              <span className="hero-tech-item">Tailwind</span>
-            </div>
-          </div>
-          <div className="hero-tech-category">
-            <div className="hero-tech-title">Backend</div>
-            <div className="hero-tech-items">
-              <span className="hero-tech-item">Node.js</span>
-              <span className="hero-tech-item">Python</span>
-              <span className="hero-tech-item">Flask</span>
-            </div>
-          </div>
-          <div className="hero-tech-category">
-            <div className="hero-tech-title">Cloud & Data</div>
-            <div className="hero-tech-items">
-              <span className="hero-tech-item">AWS</span>
-              <span className="hero-tech-item">Kafka</span>
-              <span className="hero-tech-item">Docker</span>
-            </div>
+        <div className="hero-location mb-8">
+          <div className="flex items-center justify-center gap-2 text-gray-300">
+            <MapPin size={18} className="text-gray-400" />
+            <span className="text-sm font-medium">Washington D.C. • West Palm Beach, Florida</span>
           </div>
         </div>
         
@@ -67,7 +47,7 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
           <a href="https://github.com/202PN" className="hero-social-link">
             <Github size={24} />
           </a>
-          <a href="https://www.linkedin.com/in/petehnguyen/" className="hero-social-link">
+          <a href="https://linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="hero-social-link">
             <Linkedin size={24} />
           </a>
           <a href="mailto:petenguyen96@gmail.com" className="hero-social-link">

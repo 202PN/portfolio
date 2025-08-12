@@ -192,42 +192,22 @@ body {
 .hero-technologies {
   display: flex;
   justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
   margin-bottom: 3rem;
 }
 
-.hero-tech-category {
-  text-align: center;
-  min-width: 140px;
+.hero-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.hero-tech-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--chrome-light);
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  position: relative;
-}
-
-.hero-tech-title::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--chrome) 50%, transparent 100%);
-}
-
-.hero-tech-items {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
+@media (max-width: 768px) {
+  .hero-tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 .hero-tech-item {
@@ -265,6 +245,64 @@ body {
 
 .hero-tech-item:hover::before {
   left: 100%;
+}
+
+/* Logo Container and Image Styles */
+.hero-logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-logo-container {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+
+
+.hero-logo-container:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.hero-logo-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.hero-logo-container:hover .hero-logo-image {
+  transform: scale(1.15);
+}
+
+/* Logo Tooltip */
+.hero-logo-tooltip {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: translateY(-5px);
+}
+
+.hero-logo-wrapper:hover .hero-logo-tooltip {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-stat {

@@ -51,7 +51,7 @@ const MainContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">7</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">years_experience</span> <span className="operator">=</span> <span className="number">5</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">years_experience</span> <span className="operator">=</span> <span className="number">3</span>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@ const MainContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">9</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">def</span> <span className="function">what_i_love_doing</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">def</span> <span className="function">what_i_enjoy_doing</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span>
               </div>
             </div>
             <div className="code-line">
@@ -81,19 +81,19 @@ const MainContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">11</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Solving complex problems with code"</span><span className="operator">,</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Solving everyday problems with code"</span><span className="operator">,</span>
               </div>
             </div>
             <div className="code-line">
               <span className="line-number">12</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Building apps that people love to use"</span><span className="operator">,</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Building apps that make sense and are easy to use"</span><span className="operator">,</span>
               </div>
             </div>
             <div className="code-line">
               <span className="line-number">13</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Working with cloud technologies"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Cloud technologies"</span>
               </div>
             </div>
             <div className="code-line">

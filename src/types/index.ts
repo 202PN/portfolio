@@ -67,6 +67,7 @@ export interface IDESectionProps {
   isDevMode: boolean;
   activeTab: string;
   onTabChange: (tabId: string) => void;
+  onToggleDevMode: (mode: boolean) => void;
 }
 
 export interface SimplePortfolioProps {
