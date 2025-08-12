@@ -1,8 +1,25 @@
+/**
+ * Portfolio Website Styles
+ * 
+ * This file contains all the custom CSS for the portfolio website.
+ * It includes IDE theme variables, component styles, and responsive design.
+ * 
+ * Structure:
+ * - CSS Variables & Base Styles
+ * - Hero Section Styles
+ * - IDE Interface Styles
+ * - Portfolio Styles
+ * - Responsive Design
+ * - Animations & Effects
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* IDE Theme Variables */
+/* ==========================================================================
+   CSS Variables & Base Styles
+   ========================================================================== */
 :root {
   --bg-primary: #0a0f1c !important;
   --bg-secondary: #1a1f2e !important;

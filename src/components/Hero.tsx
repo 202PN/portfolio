@@ -1,10 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Mail, Terminal, ChevronDown } from 'lucide-react';
-
-interface HeroProps {
-  onViewWork: () => void;
-  onGetInTouch: () => void;
-}
+import { HeroProps } from '../types';
 
 const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
   return (

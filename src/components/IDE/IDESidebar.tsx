@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Mail, FileText } from 'lucide-react';
 import { tabs } from '../../data/tabs';
+import { getTabIcon } from '../../utils/iconUtils';
 
 interface IDESidebarProps {
   activeTab: string;
@@ -14,14 +15,14 @@ const IDESidebar: React.FC<IDESidebarProps> = ({ activeTab, onTabChange }) => {
         <div className="ide-sidebar-title">Explorer</div>
         <div className="space-y-1">
           {tabs.map((tab) => (
-            <div
-              key={tab.id}
-              className={`ide-sidebar-item flex items-center gap-2 ${activeTab === tab.id ? 'active' : ''}`}
-              onClick={() => onTabChange(tab.id)}
-            >
-              {tab.icon}
-              <span>{tab.name}</span>
-            </div>
+                              <div
+                    key={tab.id}
+                    className={`ide-sidebar-item flex items-center gap-2 ${activeTab === tab.id ? 'active' : ''}`}
+                    onClick={() => onTabChange(tab.id)}
+                  >
+                    {getTabIcon(tab.icon)}
+                    <span>{tab.name}</span>
+                  </div>
           ))}
         </div>
       </div>
