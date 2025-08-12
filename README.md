@@ -8,6 +8,8 @@ A modern, interactive portfolio website built with React, TypeScript, and Tailwi
 
 This portfolio is automatically deployed using GitHub Actions. Every push to the main branch triggers a new deployment.
 
+**Last Deployment**: August 12, 2025 - Portfolio updates with army picture and improved carousel navigation
+
 ##  Features
 ## Technology Stack
 
