@@ -46,7 +46,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
       icon: (
         <div className="w-20 h-20 flex items-center justify-center">
           <img
-            src="src/assets/icons/us-army-logo.png"
+            src="./assets/icons/us-army-logo.png"
             alt="U.S. Army Logo"
             className="w-full h-full object-contain"
           />
@@ -62,9 +62,9 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
           {/* Military Image */}
           <div className="mb-4">
             <img 
-              src="src/assets/armyPic.jpeg" 
+              src="./assets/armyPic.jpeg" 
               alt="U.S. Army Service" 
-              className="w-full h-48 object-cover rounded-lg border border-gray-600"
+              className="w-full h-80 object-cover [object-position:center_25%] rounded-lg pt-4"
             />
           </div>
           
@@ -154,7 +154,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
               {/* Project Image */}
               <div className="mb-4">
                 <img 
-                  src="src/assets/hangarstack.png" 
+                  src="./assets/hangarstack.png" 
                   alt="HangarStack Aircraft Database Application" 
                   className="w-full h-48 object-cover rounded-lg border border-gray-600"
                 />
@@ -294,7 +294,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                     icon={
                       <div className="w-20 h-20 flex items-center justify-center">
                         <img
-                          src="src/assets/icons/us-army-logo.png"
+                          src="./assets/icons/us-army-logo.png"
                           alt="U.S. Army Logo"
                           className="w-full h-full object-contain"
                         />
@@ -314,7 +314,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                     </div>
                     <div className="pt-4 mb-4">
                       <img 
-                        src="src/assets/armyPic.jpeg" 
+                        src="./assets/armyPic.jpeg" 
                         alt="U.S. Army Service" 
                         className="w-full h-80 rounded-lg object-cover [object-position:center_25%]"
                       />
