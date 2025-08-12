@@ -305,9 +305,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                     <div className="space-y-2 text-gray-300 text-sm">
                       <p>🏆 <strong>2021 Atlantic Region Soldier of the Year</strong></p>
                       <p>🏆 <strong>2020 Best Leader: Soldier of the Year</strong></p>
-                      <p>👥 Led team of <strong>15 personnel</strong></p>
-                      <p>🏥 Served <strong>94,000 beneficiaries</strong></p>
-                      <p>💼 Managed vendor relationships and supply strategy</p>
                     </div>
                     <div className="pt-4 mb-4">
                       <img 
