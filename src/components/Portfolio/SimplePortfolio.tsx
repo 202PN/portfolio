@@ -150,11 +150,25 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
               
               {/* Project Image */}
               <div className="mb-4">
-                <img 
-                  src="./hangarstack.png" 
-                  alt="HangarStack Aircraft Database Application" 
-                  className="w-full h-48 object-cover rounded-lg border border-gray-600"
-                />
+                <div 
+                  onClick={onShowHangarStackModal}
+                  className="cursor-pointer hover:opacity-90 transition-opacity duration-200"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onShowHangarStackModal();
+                    }
+                  }}
+                  aria-label="View HangarStack project details"
+                >
+                  <img 
+                    src="./hangarstack.png" 
+                    alt="HangarStack Aircraft Database Application" 
+                    className="w-full h-[40vh] object-cover rounded-lg border border-gray-600"
+                  />
+                </div>
               </div>
             </div>
             <p className="text-gray-300 mb-4">
@@ -305,13 +319,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                     <div className="space-y-2 text-gray-300 text-sm text-center">
                       <p>🏆 <strong>2021 Atlantic Region Soldier of the Year</strong></p>
                       <p>🏆 <strong>2020 Best Leader: Soldier of the Year</strong></p>
-                    </div>
-                    <div className="pt-4 mb-4">
-                      <img 
-                        src="./armyPic.png" 
-                        alt="U.S. Army Service" 
-                        className="w-full h-full object-full [object-position:center_15%] rounded-lg pt-4"
-                      />
                     </div>
                   </PortfolioCard>
                 </div>

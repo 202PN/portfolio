@@ -44,7 +44,7 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
         </div>
         
         <div className="hero-social">
-          <a href="https://github.com/202PN" className="hero-social-link">
+          <a href="https://github.com/202PN" target="_blank" rel="noopener noreferrer" className="hero-social-link">
             <Github size={24} />
           </a>
           <a href="https://linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="hero-social-link">

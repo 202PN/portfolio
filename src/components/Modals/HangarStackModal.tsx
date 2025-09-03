@@ -9,9 +9,23 @@ interface HangarStackModalProps {
 const HangarStackModal: React.FC<HangarStackModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only close if clicking on the backdrop itself, not on the modal content
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-gray-800 border border-gray-600 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" style={{backgroundColor: 'var(--bg-secondary)'}}>
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      onClick={handleBackdropClick}
+    >
+      <div 
+        className="bg-gray-800 border border-gray-600 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" 
+        style={{backgroundColor: 'var(--bg-secondary)'}}
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Modal Header */}
         <div className="sticky top-0 border-b border-gray-600 p-6 flex items-center justify-between" style={{backgroundColor: 'var(--bg-tertiary)', borderColor: 'var(--border)'}}>
           <div className="flex items-center gap-3">
