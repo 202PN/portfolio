@@ -300,17 +300,17 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                     title="Military Service"
                     subtitle="Leadership background"
                   >
-                    <h4 className="text-white font-semibold mb-2">Army Radiology Technologist Sergeant</h4>
-                    <p className="text-yellow-400 font-medium mb-2">U.S. Army • 2016-2022</p>
-                    <div className="space-y-2 text-gray-300 text-sm">
+                    <h4 className="text-white font-semibold mb-2 text-center">Army Radiology Technologist Sergeant</h4>
+                    <p className="text-yellow-400 font-medium mb-2 text-center">U.S. Army • 2016-2022</p>
+                    <div className="space-y-2 text-gray-300 text-sm text-center">
                       <p>🏆 <strong>2021 Atlantic Region Soldier of the Year</strong></p>
                       <p>🏆 <strong>2020 Best Leader: Soldier of the Year</strong></p>
                     </div>
                     <div className="pt-4 mb-4">
                       <img 
-                        src="./armyPic.jpeg" 
+                        src="./armyPic.png" 
                         alt="U.S. Army Service" 
-                        className="w-full h-80 object-cover [object-position:center_25%] rounded-lg pt-4"
+                        className="w-full h-full object-full [object-position:center_15%] rounded-lg pt-4"
                       />
                     </div>
                   </PortfolioCard>
@@ -358,7 +358,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
               cloud architecture, real-time systems, or building scalable applications, let's discuss how I can help.
             </p>
             <div className="flex gap-4 flex-wrap">
-              <a href="mailto:pete.nguyen@example.com" className="portfolio-btn">
+              <a href="mailto:petenguyen96@gmail.com" className="portfolio-btn">
                 <Mail size={16} />
                 Email Me
               </a>
@@ -366,7 +366,12 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                 <Linkedin size={16} />
                 LinkedIn
               </a>
-              <button className="portfolio-btn secondary">
+              <button className="portfolio-btn secondary" onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/resume.pdf"; // Path in your public folder
+                  link.download = "Pete_Nguyen_Resume.pdf"; // Desired file name
+                  link.click();
+                  }}>
                 <FileText size={16} />
                 Download Resume
               </button>
