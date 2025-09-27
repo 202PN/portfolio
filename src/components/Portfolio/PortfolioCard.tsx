@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface PortfolioCardProps {
   icon: React.ReactNode;
@@ -7,7 +7,7 @@ interface PortfolioCardProps {
   children: React.ReactNode;
 }
 
-const PortfolioCard: React.FC<PortfolioCardProps> = ({ icon, title, subtitle, children }) => {
+const PortfolioCard: React.FC<PortfolioCardProps> = memo(({ icon, title, subtitle, children }) => {
   return (
     <div className="portfolio-card">
       <div className="portfolio-card-header">
@@ -24,6 +24,8 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({ icon, title, subtitle, ch
       </div>
     </div>
   );
-};
+});
+
+PortfolioCard.displayName = 'PortfolioCard';
 
 export default PortfolioCard;

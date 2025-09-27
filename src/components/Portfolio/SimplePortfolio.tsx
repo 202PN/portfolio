@@ -1,81 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import { Plane, Code, Settings, FileText, MessageSquare, ExternalLink, Github, Mail, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PortfolioCard } from './index';
-import { experience, projects, skills } from '../../data';
 import { SimplePortfolioProps } from '../../types';
+import { CONTENT, TECHNICAL, ASSETS } from '../../constants';
 
-const SimplePortfolio: React.FC<SimplePortfolioProps> = ({ 
+const SimplePortfolio: React.FC<SimplePortfolioProps> = memo(({ 
   isDevMode, 
   onToggleDevMode, 
   onShowHangarStackModal 
 }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [currentEducationSlide, setCurrentEducationSlide] = useState(0);
 
-  const carouselItems = [
-    {
-      icon: (
-        <div className="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center">
-          <FileText className="text-white" size={24} />
-        </div>
-      ),
-      title: "Education & Certifications",
-      subtitle: "Continuous learning",
-      content: (
-        <div className="space-y-3 text-center">
-          <div>
-            <h4 className="text-white font-semibold">B.S. Cybersecurity</h4>
-            <p className="text-yellow-400 text-sm">Purdue Global University • 2025</p>
-          </div>
-          <div>
-            <h4 className="text-white font-semibold">Microsoft Software Academy</h4>
-            <p className="text-yellow-400 text-sm">Cloud Application Development • 2022</p>
-          </div>
-          <div className="pt-2">
-            <p className="text-gray-400 text-sm mb-2">Certifications:</p>
-            <div className="skill-tags flex justify-center gap-2">
-              <span className="skill-tag">Certified ScrumMaster</span>
-              <span className="skill-tag">Microsoft MTA</span>
-              <span className="skill-tag">AWS Developer (In Progress)</span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      icon: (
-        <div className="w-20 h-20 flex items-center justify-center">
-          <img
-            src="./us-army-logo.png"
-            alt="U.S. Army Logo"
-            className="w-full h-full object-contain"
-          />
-        </div>
-      ),
-      title: "Military Service",
-      subtitle: "Leadership background",
-      content: (
-        <div>
-          <h4 className="text-white font-semibold mb-2">Army Radiology Technologist Sergeant</h4>
-          <p className="text-yellow-400 font-medium mb-2">U.S. Army • 2016-2022</p>
-          
-          {/* Military Image */}
-          <div className="mb-4">
-            <img 
-              src="./armyPic.jpeg" 
-              alt="U.S. Army Service" 
-              className="w-full h-80 object-cover [object-position:center_25%] rounded-lg pt-4"
-            />
-          </div>
-          
-          <div className="space-y-2 text-gray-300 text-sm">
-            <p>🏆 <strong>2021 Atlantic Region Soldier of the Year</strong></p>
-            <p>🏆 <strong>2020 Best Leader: Soldier of the Year</strong></p>
-          </div>
-        </div>
-      ),
-    },
-  ];
+  // Memoized carousel navigation handlers
+  const handlePreviousSlide = useCallback(() => {
+    setCurrentEducationSlide((prev) => (prev - 1 + 2) % 2);
+  }, []);
+
+  const handleNextSlide = useCallback(() => {
+    setCurrentEducationSlide((prev) => (prev + 1) % 2);
+  }, []);
+
+  const handleSlideSelect = useCallback((index: number) => {
+    setCurrentEducationSlide(index);
+  }, []);
+
+  // Memoized resume download handler
+  const handleResumeDownload = useCallback(() => {
+    const link = document.createElement("a");
+    link.href = ASSETS.DOCUMENTS.RESUME;
+    link.download = "Pete_Nguyen_Resume.pdf";
+    link.click();
+  }, []);
 
   return (
     <section id="simple-portfolio" className={`simple-portfolio ${isDevMode ? 'hidden' : ''}`}>
@@ -103,7 +58,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-6">My Professional Journey</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Backend Software Engineer with 3+ years of experience building scalable applications and cloud solutions. 
+            Backend Software Engineer with {TECHNICAL.EXPERIENCE_YEARS}+ years of experience building scalable applications and cloud solutions. 
           </p>
         </div>
 
@@ -119,15 +74,15 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
             subtitle="Where I most recently worked"
           >
             <div className="mb-4">
-              <h4 className="text-lg font-semibold text-white mb-2">Associate Software Engineer</h4>
-              <p className="text-blue-400 font-medium mb-2">Southwest Airlines • Dallas, Texas</p>
-              <p className="text-gray-400 text-sm mb-4">2022 - 2025</p>
+              <h4 className="text-lg font-semibold text-white mb-2">{CONTENT.EXPERIENCE.CURRENT_ROLE.TITLE}</h4>
+              <p className="text-blue-400 font-medium mb-2">{CONTENT.EXPERIENCE.CURRENT_ROLE.COMPANY} • {CONTENT.EXPERIENCE.CURRENT_ROLE.LOCATION}</p>
+              <p className="text-gray-400 text-sm mb-4">{CONTENT.EXPERIENCE.CURRENT_ROLE.PERIOD}</p>
             </div>
             <div className="space-y-3 text-gray-300">
-              <p>• Built systems that process <strong>10 million events daily</strong> for flight operations</p>
-              <p>• Developed real-time reservation systems handling <strong>millions of daily transactions</strong></p>
-              <p>• Led <strong>25 production deployments</strong> with zero downtime</p>
-              <p>• Reduced engineer onboarding time by <strong>50%</strong> through better documentation</p>
+              <p>• Built systems that process <strong>{TECHNICAL.DAILY_EVENTS} events daily</strong> for flight operations</p>
+              <p>• Developed real-time reservation systems handling <strong>{TECHNICAL.DAILY_TRANSACTIONS}</strong></p>
+              <p>• Led <strong>{TECHNICAL.PRODUCTION_DEPLOYMENTS} production deployments</strong> with zero downtime</p>
+              <p>• Reduced engineer onboarding time by <strong>{TECHNICAL.ONBOARDING_REDUCTION}</strong> through better documentation</p>
               <p>• Migrated legacy systems to modern cloud architecture</p>
             </div>
           </PortfolioCard>
@@ -164,7 +119,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                   aria-label="View HangarStack project details"
                 >
                   <img 
-                    src="./hangarstack.png" 
+                    src={ASSETS.IMAGES.HANGARSTACK} 
                     alt="HangarStack Aircraft Database Application" 
                     className="w-full h-[40vh] object-cover rounded-lg border border-gray-600"
                   />
@@ -244,7 +199,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
           {/* Navigation Arrows - Above Carousel */}
           <div className="flex justify-end mb-4 gap-2">
             <button
-              onClick={() => setCurrentEducationSlide((prev) => (prev - 1 + 2) % 2)}
+              onClick={handlePreviousSlide}
               className="bg-gray-800 hover:bg-gray-700 text-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
               aria-label="Previous slide"
             >
@@ -252,7 +207,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
             </button>
             
             <button
-              onClick={() => setCurrentEducationSlide((prev) => (prev + 1) % 2)}
+              onClick={handleNextSlide}
               className="bg-gray-800 hover:bg-gray-700 text-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
               aria-label="Next slide"
             >
@@ -280,12 +235,12 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                   >
                     <div className="space-y-3 text-center">
                       <div>
-                        <h4 className="text-white font-semibold">B.S. Cybersecurity</h4>
-                        <p className="text-yellow-400 text-sm">Purdue Global University • 2025</p>
+                        <h4 className="text-white font-semibold">{CONTENT.EDUCATION.DEGREE}</h4>
+                        <p className="text-yellow-400 text-sm">{CONTENT.EDUCATION.SCHOOL} • {CONTENT.EDUCATION.GRADUATION}</p>
                       </div>
                       <div>
-                        <h4 className="text-white font-semibold">Microsoft Software Academy</h4>
-                        <p className="text-yellow-400 text-sm">Cloud Application Development • 2022</p>
+                        <h4 className="text-white font-semibold">{CONTENT.EDUCATION.ACADEMY}</h4>
+                        <p className="text-yellow-400 text-sm">{CONTENT.EDUCATION.ACADEMY_FOCUS} • {CONTENT.EDUCATION.ACADEMY_YEAR}</p>
                       </div>
                       <div className="pt-2">
                         <p className="text-gray-400 text-sm mb-2">Certifications:</p>
@@ -305,7 +260,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                     icon={
                       <div className="w-20 h-20 flex items-center justify-center">
                         <img
-                          src="./us-army-logo.png"
+                          src={ASSETS.IMAGES.ARMY_LOGO}
                           alt="U.S. Army Logo"
                           className="w-full h-full object-contain"
                         />
@@ -314,11 +269,12 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                     title="Military Service"
                     subtitle="Leadership background"
                   >
-                    <h4 className="text-white font-semibold mb-2 text-center">Army Radiology Technologist Sergeant</h4>
-                    <p className="text-yellow-400 font-medium mb-2 text-center">U.S. Army • 2016-2022</p>
+                    <h4 className="text-white font-semibold mb-2 text-center">{CONTENT.MILITARY.TITLE}</h4>
+                    <p className="text-yellow-400 font-medium mb-2 text-center">{CONTENT.MILITARY.BRANCH} • {CONTENT.MILITARY.PERIOD}</p>
                     <div className="space-y-2 text-gray-300 text-sm text-center">
-                      <p>🏆 <strong>2021 Atlantic Region Soldier of the Year</strong></p>
-                      <p>🏆 <strong>2020 Best Leader: Soldier of the Year</strong></p>
+                      {CONTENT.MILITARY.ACHIEVEMENTS.map((achievement, index) => (
+                        <p key={index}>🏆 <strong>{achievement}</strong></p>
+                      ))}
                     </div>
                   </PortfolioCard>
                 </div>
@@ -327,24 +283,18 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
 
             {/* Carousel Indicators */}
             <div className="flex justify-center mt-6 gap-2">
-              <button
-                onClick={() => setCurrentEducationSlide(0)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  currentEducationSlide === 0 
-                    ? 'bg-blue-500 scale-110' 
-                    : 'bg-gray-400 hover:bg-gray-300'
-                }`}
-                aria-label="Go to education slide"
-              />
-              <button
-                onClick={() => setCurrentEducationSlide(1)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  currentEducationSlide === 1 
-                    ? 'bg-blue-500 scale-110' 
-                    : 'bg-gray-400 hover:bg-gray-300'
-                }`}
-                aria-label="Go to military slide"
-              />
+              {[0, 1].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSlideSelect(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    currentEducationSlide === index 
+                      ? 'bg-blue-500 scale-110' 
+                      : 'bg-gray-400 hover:bg-gray-300'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -365,20 +315,15 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
               cloud architecture, real-time systems, or building scalable applications, let's discuss how I can help.
             </p>
             <div className="flex gap-4 flex-wrap">
-              <a href="mailto:petenguyen96@gmail.com" className="portfolio-btn">
+              <a href={`mailto:${CONTENT.CONTACT.EMAIL}`} className="portfolio-btn">
                 <Mail size={16} />
                 Email Me
               </a>
-              <a href="https://linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="portfolio-btn secondary">
+              <a href={CONTENT.CONTACT.LINKEDIN} target="_blank" rel="noopener noreferrer" className="portfolio-btn secondary">
                 <Linkedin size={16} />
                 LinkedIn
               </a>
-              <button className="portfolio-btn secondary" onClick={() => {
-                  const link = document.createElement("a");
-                  link.href = "/resume.pdf"; // Path in your public folder
-                  link.download = "Pete_Nguyen_Resume.pdf"; // Desired file name
-                  link.click();
-                  }}>
+              <button className="portfolio-btn secondary" onClick={handleResumeDownload}>
                 <FileText size={16} />
                 Download Resume
               </button>
@@ -388,6 +333,8 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
       </div>
     </section>
   );
-};
+});
+
+SimplePortfolio.displayName = 'SimplePortfolio';
 
 export default SimplePortfolio;

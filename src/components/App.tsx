@@ -1,23 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Hero, IDESection, SimplePortfolio, HangarStackModal } from './index';
-import { getActiveSection } from '../utils';
 import { CONFIG } from '../config';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState(CONFIG.IDE.DEFAULT_TAB);
-  const [activeSection, setActiveSection] = useState('home');
   const [isDevMode, setIsDevMode] = useState(false);
   const [showHangarStackModal, setShowHangarStackModal] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentSection = getActiveSection([...CONFIG.NAVIGATION.SECTIONS]);
-      setActiveSection(currentSection);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleViewWork = () => {
     document.getElementById('simple-portfolio')?.scrollIntoView({ behavior: 'smooth' });
@@ -32,7 +20,7 @@ const App: React.FC = () => {
   };
 
   const handleTabChange = (tabId: string) => {
-    setActiveTab(tabId as any);
+    setActiveTab(tabId);
   };
 
   const handleShowHangarStackModal = () => {

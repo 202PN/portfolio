@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Github, Linkedin, Mail, Terminal, ChevronDown, MapPin } from 'lucide-react';
 import { HeroProps } from '../types';
+import { CONTENT } from '../constants';
 
-const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
+const Hero: React.FC<HeroProps> = memo(({ onViewWork, onGetInTouch }) => {
   return (
     <section className="hero-section min-h-screen flex items-center justify-center relative">
       <div className="hero-content max-w-4xl mx-auto px-6 text-center">
@@ -11,18 +12,17 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
         </div>
         
         <h1 className="hero-title mb-6">
-          Hi, I'm <span className="hero-name">Pete</span>
+          Hi, I'm <span className="hero-name">{CONTENT.HERO.NAME}</span>
         </h1>
         
         <p className="hero-subtitle mb-8">
-          A <strong>Software Engineer</strong> who builds amazing digital experiences
-          and solves complex problems with clean code.
+          A <strong>{CONTENT.HERO.TITLE}</strong> {CONTENT.HERO.DESCRIPTION}
         </p>
         
         <div className="hero-location mb-8">
           <div className="flex items-center justify-center gap-2 text-gray-300">
             <MapPin size={18} className="text-gray-400" />
-            <span className="text-sm font-medium">Washington D.C. • West Palm Beach, Florida</span>
+            <span className="text-sm font-medium">{CONTENT.HERO.LOCATION}</span>
           </div>
         </div>
         
@@ -44,13 +44,13 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
         </div>
         
         <div className="hero-social">
-          <a href="https://github.com/202PN" target="_blank" rel="noopener noreferrer" className="hero-social-link">
+          <a href={CONTENT.CONTACT.GITHUB} target="_blank" rel="noopener noreferrer" className="hero-social-link">
             <Github size={24} />
           </a>
-          <a href="https://linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="hero-social-link">
+          <a href={CONTENT.CONTACT.LINKEDIN} target="_blank" rel="noopener noreferrer" className="hero-social-link">
             <Linkedin size={24} />
           </a>
-          <a href="mailto:petenguyen96@gmail.com" className="hero-social-link">
+          <a href={`mailto:${CONTENT.CONTACT.EMAIL}`} className="hero-social-link">
             <Mail size={24} />
           </a>
         </div>
@@ -66,6 +66,8 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
       <div className="hero-transition"></div>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

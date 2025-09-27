@@ -153,11 +153,9 @@ body {
 }
 
 .hero-name {
-  background: linear-gradient(45deg, var(--chrome-light) 0%, var(--chrome) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--chrome-light);
   position: relative;
+  font-weight: 800;
 }
 
 .hero-name::after {

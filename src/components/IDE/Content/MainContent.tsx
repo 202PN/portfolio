@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { User, Code, MessageSquare, Github } from 'lucide-react';
+import { CONTENT, TECHNICAL } from '../../../constants';
 
-const MainContent: React.FC = () => {
+const MainContent: React.FC = memo(() => {
   return (
     <div className="space-y-6">
       {/* Introduction Card */}
@@ -33,13 +34,13 @@ const MainContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">4</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">name</span> <span className="operator">=</span> <span className="string">"Pete Nguyen"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">name</span> <span className="operator">=</span> <span className="string">"{CONTENT.HERO.NAME} Nguyen"</span>
               </div>
             </div>
             <div className="code-line">
               <span className="line-number">5</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">role</span> <span className="operator">=</span> <span className="string">"Software Engineer"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">role</span> <span className="operator">=</span> <span className="string">"{CONTENT.HERO.TITLE}"</span>
               </div>
             </div>
             <div className="code-line">
@@ -51,7 +52,7 @@ const MainContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">7</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">years_experience</span> <span className="operator">=</span> <span className="number">3</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">years_experience</span> <span className="operator">=</span> <span className="number">{TECHNICAL.EXPERIENCE_YEARS}</span>
               </div>
             </div>
           </div>
@@ -131,7 +132,7 @@ const MainContent: React.FC = () => {
             <button className="ide-button secondary">
               Download Resume
             </button>
-            <a href="#" className="ide-button secondary flex items-center gap-2">
+            <a href={CONTENT.CONTACT.GITHUB} className="ide-button secondary flex items-center gap-2">
               <Github size={16} />
               GitHub
             </a>
@@ -140,6 +141,8 @@ const MainContent: React.FC = () => {
       </div>
     </div>
   );
-};
+});
+
+MainContent.displayName = 'MainContent';
 
 export default MainContent;

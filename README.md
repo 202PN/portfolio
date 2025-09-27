@@ -10,7 +10,16 @@ This portfolio is automatically deployed using GitHub Actions. Every push to the
 
 **Last Deployment**: August 12, 2025 - Portfolio updates with army picture and improved carousel navigation
 
-##  Features
+## Features
+
+- **Modern React Architecture**: Built with React 18, TypeScript, and modern hooks
+- **Performance Optimized**: Uses React.memo, useMemo, and useCallback for optimal rendering
+- **Centralized Constants**: All colors, fonts, and configuration values in one place
+- **Type Safety**: Full TypeScript coverage with proper interfaces and types
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **IDE Theme**: Unique developer-focused interface mimicking VS Code
+- **Accessibility**: Proper ARIA labels and keyboard navigation support
+
 ## Technology Stack
 
 ### Frontend

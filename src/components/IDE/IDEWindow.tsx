@@ -1,5 +1,4 @@
-import React from 'react';
-import { Tab } from '../../types';
+import React, { memo } from 'react';
 import IDETitleBar from './IDETitleBar';
 import IDENavigation from './IDENavigation';
 import IDESidebar from './IDESidebar';
@@ -11,7 +10,7 @@ interface IDEWindowProps {
   children: React.ReactNode;
 }
 
-const IDEWindow: React.FC<IDEWindowProps> = ({ activeTab, onTabChange, children }) => {
+const IDEWindow: React.FC<IDEWindowProps> = memo(({ activeTab, onTabChange, children }) => {
   return (
     <div className="ide-window" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Title Bar */}
@@ -34,6 +33,8 @@ const IDEWindow: React.FC<IDEWindowProps> = ({ activeTab, onTabChange, children 
       <IDEStatusBar />
     </div>
   );
-};
+});
+
+IDEWindow.displayName = 'IDEWindow';
 
 export default IDEWindow;

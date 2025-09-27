@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { memo, useMemo } from 'react';
 import { IDEWindow } from './index';
 import { MainContent, SkillsContent, ExperienceContent, ProjectsContent, ContactContent } from './Content';
 import { IDESectionProps } from '../../types';
+import { CONFIG } from '../../constants';
 
-const IDESection: React.FC<IDESectionProps> = ({ isDevMode, activeTab, onTabChange, onToggleDevMode }) => {
-  const renderContent = () => {
+const IDESection: React.FC<IDESectionProps> = memo(({ isDevMode, activeTab, onTabChange, onToggleDevMode }) => {
+  // Memoize content rendering to prevent unnecessary re-renders
+  const content = useMemo(() => {
     switch (activeTab) {
-      case 'main.py':
+      case CONFIG.IDE.TABS[0].id: // 'main.py'
         return <MainContent />;
-      case 'my_skills.py':
+      case CONFIG.IDE.TABS[1].id: // 'my_skills.py'
         return <SkillsContent />;
-      case 'work_experience.py':
+      case CONFIG.IDE.TABS[2].id: // 'work_experience.py'
         return <ExperienceContent />;
-      case 'projects.py':
+      case CONFIG.IDE.TABS[3].id: // 'projects.py'
         return <ProjectsContent />;
-      case 'contact.py':
+      case CONFIG.IDE.TABS[4].id: // 'contact.py'
         return <ContactContent />;
       default:
         return <MainContent />;
     }
-  };
+  }, [activeTab]);
 
   return (
     <section id="ide-section" className={`ide-section ${!isDevMode ? 'hidden' : ''}`}>
@@ -52,10 +54,12 @@ const IDESection: React.FC<IDESectionProps> = ({ isDevMode, activeTab, onTabChan
       </div>
       
       <IDEWindow activeTab={activeTab} onTabChange={onTabChange}>
-        {renderContent()}
+        {content}
       </IDEWindow>
     </section>
   );
-};
+});
+
+IDESection.displayName = 'IDESection';
 
 export default IDESection;
