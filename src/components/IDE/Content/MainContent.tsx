@@ -45,7 +45,7 @@ const MainContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">6</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">passion</span> <span className="operator">=</span> <span className="string">"Building amazing digital experiences"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">passion</span> <span className="operator">=</span> <span className="string">"Building reliable software solutions"</span>
               </div>
             </div>
             <div className="code-line">
