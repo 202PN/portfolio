@@ -26,9 +26,6 @@ const ExperienceContent: React.FC = () => {
               </div>
             </div>
           </div>
-          <p className="text-gray-300">
-            My career journey through different companies and roles:
-          </p>
         </div>
       </div>
 
@@ -91,33 +88,6 @@ const ExperienceContent: React.FC = () => {
           </div>
         </div>
       ))}
-
-      {/* Summary Card */}
-      <div className="code-card">
-        <div className="code-card-header">
-          <User size={16} />
-          <span>Career Growth</span>
-        </div>
-        <div className="code-card-body">
-          <div className="code-block mb-4">
-            <div className="code-line">
-              <span className="line-number">{4 + experience.length * 6}</span>
-              <div className="code-content">
-                <span className="bracket">]</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">{5 + experience.length * 6}</span>
-              <div className="code-content">
-                <span className="comment"># Each role taught me something new and helped me grow!</span>
-              </div>
-            </div>
-          </div>
-          <p className="text-gray-300">
-            Every position has been a stepping stone, building my expertise in cloud technologies, event-driven architectures, and scalable software solutions.
-          </p>
-        </div>
-      </div>
     </div>
   );
 };

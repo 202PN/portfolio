@@ -2,7 +2,7 @@ import React from 'react';
 import { Github, Linkedin, Mail, Terminal, ChevronDown, MapPin } from 'lucide-react';
 import { HeroProps } from '../types';
 
-const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
+const Hero: React.FC<HeroProps> = ({ onViewWork }) => {
   return (
     <section className="hero-section min-h-screen flex items-center justify-center relative">
       <div className="hero-content max-w-4xl mx-auto px-6 text-center">
@@ -15,14 +15,17 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
         </h1>
         
         <p className="hero-subtitle mb-8">
-          A <strong>Software Engineer</strong> who builds amazing digital experiences
-          and solves complex problems with clean code.
+          I'm a <strong>Software Engineer</strong> who builds reliable softeware for personal, busines, and enterprise needs.
         </p>
         
         <div className="hero-location mb-8">
-          <div className="flex items-center justify-center gap-2 text-gray-300">
+          <div className="flex items-center justify-center gap-2 text-gray-300 mb-2">
             <MapPin size={18} className="text-gray-400" />
             <span className="text-sm font-medium">Washington D.C. • West Palm Beach, Florida</span>
+          </div>
+          <div className="flex items-center justify-center gap-2 text-gray-300">
+            <Mail size={18} className="text-gray-400" />
+            <span className="text-sm font-medium">petenguyen96@gmail.com</span>
           </div>
         </div>
         
@@ -34,20 +37,13 @@ const Hero: React.FC<HeroProps> = ({ onViewWork, onGetInTouch }) => {
             <Terminal size={20} />
             View My Work
           </button>
-          <button 
-            className="hero-btn hero-btn-secondary"
-            onClick={onGetInTouch}
-          >
-            <Mail size={20} />
-            Get In Touch
-          </button>
         </div>
         
         <div className="hero-social">
           <a href="https://github.com/202PN" target="_blank" rel="noopener noreferrer" className="hero-social-link">
             <Github size={24} />
           </a>
-          <a href="https://linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="hero-social-link">
+          <a href="https://www.linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="hero-social-link">
             <Linkedin size={24} />
           </a>
           <a href="mailto:petenguyen96@gmail.com" className="hero-social-link">

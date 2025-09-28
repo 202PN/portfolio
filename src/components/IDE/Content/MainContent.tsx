@@ -69,7 +69,7 @@ const MainContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">9</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">def</span> <span className="function">what_i_enjoy_doing</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">def</span> <span className="function">what_i_enjoy_building</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span>
               </div>
             </div>
             <div className="code-line">
@@ -81,19 +81,19 @@ const MainContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">11</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Solving everyday problems with code"</span><span className="operator">,</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Reliable software"</span><span className="operator">,</span>
               </div>
             </div>
             <div className="code-line">
               <span className="line-number">12</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Building apps that make sense and are easy to use"</span><span className="operator">,</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"User-friendly applications"</span><span className="operator">,</span>
               </div>
             </div>
             <div className="code-line">
               <span className="line-number">13</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Cloud technologies"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Cloud infrastructure"</span>
               </div>
             </div>
             <div className="code-line">
@@ -128,10 +128,7 @@ const MainContent: React.FC = () => {
             <button className="ide-button">
               View Projects
             </button>
-            <button className="ide-button secondary">
-              Download Resume
-            </button>
-            <a href="#" className="ide-button secondary flex items-center gap-2">
+            <a href="https://github.com/202PN" target="_blank" rel="noopener noreferrer" className="ide-button secondary flex items-center gap-2">
               <Github size={16} />
               GitHub
             </a>

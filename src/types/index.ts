@@ -60,7 +60,6 @@ export interface ContactForm {
  */
 export interface HeroProps {
   onViewWork: () => void;
-  onGetInTouch: () => void;
 }
 
 export interface IDESectionProps {

@@ -38,10 +38,6 @@ const IDESidebar: React.FC<IDESidebarProps> = ({ activeTab, onTabChange }) => {
             <Mail size={14} />
             <span>Send Email</span>
           </div>
-          <div className="ide-sidebar-item flex items-center gap-2">
-            <FileText size={14} />
-            <span>Download Resume</span>
-          </div>
         </div>
       </div>
     </div>

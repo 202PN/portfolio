@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Plane, Code, Settings, FileText, MessageSquare, ExternalLink, Github, Mail, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PortfolioCard } from './index';
-import { experience, projects, skills } from '../../data';
 import { SimplePortfolioProps } from '../../types';
 
 const SimplePortfolio: React.FC<SimplePortfolioProps> = ({ 
@@ -9,73 +8,7 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
   onToggleDevMode, 
   onShowHangarStackModal 
 }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [currentEducationSlide, setCurrentEducationSlide] = useState(0);
-
-  const carouselItems = [
-    {
-      icon: (
-        <div className="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center">
-          <FileText className="text-white" size={24} />
-        </div>
-      ),
-      title: "Education & Certifications",
-      subtitle: "Continuous learning",
-      content: (
-        <div className="space-y-3 text-center">
-          <div>
-            <h4 className="text-white font-semibold">B.S. Cybersecurity</h4>
-            <p className="text-yellow-400 text-sm">Purdue Global University • 2025</p>
-          </div>
-          <div>
-            <h4 className="text-white font-semibold">Microsoft Software Academy</h4>
-            <p className="text-yellow-400 text-sm">Cloud Application Development • 2022</p>
-          </div>
-          <div className="pt-2">
-            <p className="text-gray-400 text-sm mb-2">Certifications:</p>
-            <div className="skill-tags flex justify-center gap-2">
-              <span className="skill-tag">Certified ScrumMaster</span>
-              <span className="skill-tag">Microsoft MTA</span>
-              <span className="skill-tag">AWS Developer (In Progress)</span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      icon: (
-        <div className="w-20 h-20 flex items-center justify-center">
-          <img
-            src="./us-army-logo.png"
-            alt="U.S. Army Logo"
-            className="w-full h-full object-contain"
-          />
-        </div>
-      ),
-      title: "Military Service",
-      subtitle: "Leadership background",
-      content: (
-        <div>
-          <h4 className="text-white font-semibold mb-2">Army Radiology Technologist Sergeant</h4>
-          <p className="text-yellow-400 font-medium mb-2">U.S. Army • 2016-2022</p>
-          
-          {/* Military Image */}
-          <div className="mb-4">
-            <img 
-              src="./armyPic.jpeg" 
-              alt="U.S. Army Service" 
-              className="w-full h-80 object-cover [object-position:center_25%] rounded-lg pt-4"
-            />
-          </div>
-          
-          <div className="space-y-2 text-gray-300 text-sm">
-            <p>🏆 <strong>2021 Atlantic Region Soldier of the Year</strong></p>
-            <p>🏆 <strong>2020 Best Leader: Soldier of the Year</strong></p>
-          </div>
-        </div>
-      ),
-    },
-  ];
 
   return (
     <section id="simple-portfolio" className={`simple-portfolio ${isDevMode ? 'hidden' : ''}`}>
@@ -97,14 +30,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
               </span>
             </label>
           </div>
-        </div>
-
-        {/* Professional Summary */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-6">My Professional Journey</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Backend Software Engineer with 3+ years of experience building scalable applications and cloud solutions. 
-          </p>
         </div>
 
         {/* Current Role */}
@@ -129,6 +54,49 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
               <p>• Led <strong>25 production deployments</strong> with zero downtime</p>
               <p>• Reduced engineer onboarding time by <strong>50%</strong> through better documentation</p>
               <p>• Migrated legacy systems to modern cloud architecture</p>
+            </div>
+          </PortfolioCard>
+        </div>
+
+        {/* Skills Overview */}
+        <div className="mb-16">
+          <PortfolioCard
+            icon={
+              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                <Settings className="text-white" size={24} />
+              </div>
+            }
+            title="Technical Expertise"
+            subtitle="What I work with"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="skill-category">
+                <h4 className="skill-category-title">Cloud & Infrastructure</h4>
+                <p className="skill-category-desc">Building scalable systems in the cloud</p>
+                <div className="skill-tags">
+                  <span className="skill-tag">AWS</span>
+                  <span className="skill-tag">Docker</span>
+                  <span className="skill-tag">CloudFormation</span>
+                </div>
+              </div>
+              <div className="skill-category">
+                <h4 className="skill-category-title">Programming</h4>
+                <p className="skill-category-desc">Languages and frameworks I use daily</p>
+                <div className="skill-tags">
+                  <span className="skill-tag">Python</span>
+                  <span className="skill-tag">Flask</span>
+                  <span className="skill-tag">SQL</span>
+                </div>
+              </div>
+              <div className="skill-category">
+                <h4 className="skill-category-title">Data & Messaging</h4>
+                <p className="skill-category-desc">Real-time data processing systems</p>
+                <div className="skill-tags">
+                  <span className="skill-tag">Apache Kafka</span>
+                  <span className="skill-tag">DynamoDB</span>
+                  <span className="skill-tag">MySQL</span>
+                </div>
+              </div>
             </div>
           </PortfolioCard>
         </div>
@@ -192,49 +160,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                 <Github size={16} />
                 GitHub
               </a>
-            </div>
-          </PortfolioCard>
-        </div>
-
-        {/* Skills Overview */}
-        <div className="mb-16">
-          <PortfolioCard
-            icon={
-              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
-                <Settings className="text-white" size={24} />
-              </div>
-            }
-            title="Technical Expertise"
-            subtitle="What I work with"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="skill-category">
-                <h4 className="skill-category-title">Cloud & Infrastructure</h4>
-                <p className="skill-category-desc">Building scalable systems in the cloud</p>
-                <div className="skill-tags">
-                  <span className="skill-tag">AWS</span>
-                  <span className="skill-tag">Docker</span>
-                  <span className="skill-tag">CloudFormation</span>
-                </div>
-              </div>
-              <div className="skill-category">
-                <h4 className="skill-category-title">Programming</h4>
-                <p className="skill-category-desc">Languages and frameworks I use daily</p>
-                <div className="skill-tags">
-                  <span className="skill-tag">Python</span>
-                  <span className="skill-tag">Flask</span>
-                  <span className="skill-tag">SQL</span>
-                </div>
-              </div>
-              <div className="skill-category">
-                <h4 className="skill-category-title">Data & Messaging</h4>
-                <p className="skill-category-desc">Real-time data processing systems</p>
-                <div className="skill-tags">
-                  <span className="skill-tag">Apache Kafka</span>
-                  <span className="skill-tag">DynamoDB</span>
-                  <span className="skill-tag">MySQL</span>
-                </div>
-              </div>
             </div>
           </PortfolioCard>
         </div>
@@ -348,43 +273,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
             </div>
           </div>
         </div>
-
-        {/* Contact Section */}
-        <section id="lets-work-together">
-          <PortfolioCard
-            icon={
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                <MessageSquare className="text-white" size={24} />
-              </div>
-            }
-            title="Let's Work Together"
-            subtitle="Ready to build something amazing?"
-          >
-            <p className="text-gray-300 mb-6">
-              I'm always interested in new opportunities and challenging projects. Whether you need help with 
-              cloud architecture, real-time systems, or building scalable applications, let's discuss how I can help.
-            </p>
-            <div className="flex gap-4 flex-wrap">
-              <a href="mailto:petenguyen96@gmail.com" className="portfolio-btn">
-                <Mail size={16} />
-                Email Me
-              </a>
-              <a href="https://linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="portfolio-btn secondary">
-                <Linkedin size={16} />
-                LinkedIn
-              </a>
-              <button className="portfolio-btn secondary" onClick={() => {
-                  const link = document.createElement("a");
-                  link.href = "/resume.pdf"; // Path in your public folder
-                  link.download = "Pete_Nguyen_Resume.pdf"; // Desired file name
-                  link.click();
-                  }}>
-                <FileText size={16} />
-                Download Resume
-              </button>
-            </div>
-          </PortfolioCard>
-        </section>
       </div>
     </section>
   );

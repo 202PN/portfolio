@@ -23,10 +23,6 @@ const App: React.FC = () => {
     document.getElementById('simple-portfolio')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleGetInTouch = () => {
-    document.getElementById('lets-work-together')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const handleToggleDevMode = (mode: boolean) => {
     setIsDevMode(mode);
   };
@@ -46,7 +42,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <Hero onViewWork={handleViewWork} onGetInTouch={handleGetInTouch} />
+      <Hero onViewWork={handleViewWork} />
       
       {/* IDE Section */}
       <IDESection 

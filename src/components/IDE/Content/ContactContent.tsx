@@ -33,7 +33,7 @@ const ContactContent: React.FC = () => {
             <div className="code-line">
               <span className="line-number">4</span>
               <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"linkedin"</span><span className="operator">:</span> <span className="string">"https://linkedin.com/in/petehnguyen"</span><span className="operator">,</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"linkedin"</span><span className="operator">:</span> <span className="string">"https://www.linkedin.com/in/petehnguyen"</span><span className="operator">,</span>
               </div>
             </div>
             <div className="code-line">
@@ -57,11 +57,11 @@ const ContactContent: React.FC = () => {
               <Mail size={16} />
               Email Me
             </a>
-            <a href="https://linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="ide-button secondary flex items-center gap-2">
+            <a href="https://www.linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="ide-button secondary flex items-center gap-2">
               <Linkedin size={16} />
               LinkedIn
             </a>
-            <a href="#" className="ide-button secondary flex items-center gap-2">
+            <a href="https://github.com/202PN" target="_blank" rel="noopener noreferrer" className="ide-button secondary flex items-center gap-2">
               <Github size={16} />
               GitHub
             </a>

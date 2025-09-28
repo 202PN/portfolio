@@ -43,11 +43,6 @@ const IDESection: React.FC<IDESectionProps> = ({ isDevMode, activeTab, onTabChan
               </label>
             </div>
           </div>
-          
-          <h2 className="ide-intro-title">Let's dive into the code</h2>
-          <p className="ide-intro-subtitle">
-            Explore my work through the lens of a developer.
-          </p>
         </div>
       </div>
       
