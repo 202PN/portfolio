@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({ onViewWork }) => {
         </h1>
         
         <p className="hero-subtitle mb-8">
-          I'm a <strong>Software Engineer</strong> who builds reliable software for personal, busines, and enterprise needs.
+          I'm a <strong>Software Engineer</strong> who builds reliable software for personal, business, and enterprise needs.
         </p>
         
         <div className="hero-location mb-8">
