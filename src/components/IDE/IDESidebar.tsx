@@ -1,7 +1,8 @@
 import React from 'react';
-import { Github, Mail, FileText } from 'lucide-react';
+import { Github, Mail, Linkedin } from 'lucide-react';
 import { tabs } from '../../data/tabs';
 import { getTabIcon } from '../../utils/iconUtils';
+import { CONFIG } from '../../config';
 
 interface IDESidebarProps {
   activeTab: string;
@@ -30,14 +31,31 @@ const IDESidebar: React.FC<IDESidebarProps> = ({ activeTab, onTabChange }) => {
       <div className="ide-sidebar-section">
         <div className="ide-sidebar-title">Quick Actions</div>
         <div className="space-y-1">
-          <div className="ide-sidebar-item flex items-center gap-2">
+          <a 
+            href={CONFIG.CONTACT.GITHUB} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="ide-sidebar-item flex items-center gap-2 hover:bg-gray-700 transition-colors"
+          >
             <Github size={14} />
             <span>View GitHub</span>
-          </div>
-          <div className="ide-sidebar-item flex items-center gap-2">
+          </a>
+          <a 
+            href={CONFIG.CONTACT.LINKEDIN} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="ide-sidebar-item flex items-center gap-2 hover:bg-gray-700 transition-colors"
+          >
+            <Linkedin size={14} />
+            <span>View LinkedIn</span>
+          </a>
+          <a 
+            href={`mailto:${CONFIG.CONTACT.EMAIL}`}
+            className="ide-sidebar-item flex items-center gap-2 hover:bg-gray-700 transition-colors"
+          >
             <Mail size={14} />
             <span>Send Email</span>
-          </div>
+          </a>
         </div>
       </div>
     </div>

@@ -111,12 +111,12 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
             <div className="mb-6">
               <div className="flex flex-wrap gap-3">
                 <span className="tech-pill primary">Python</span>
+                <span className="tech-pill primary">C#</span>
                 <span className="tech-pill primary">AWS</span>
                 <span className="tech-pill primary">Kafka</span>
                 <span className="tech-pill primary">Docker</span>
-                <span className="tech-pill primary">PostgreSQL</span>
+                <span className="tech-pill primary">SQL</span>
                 <span className="tech-pill primary">TypeScript</span>
-                <span className="tech-pill primary">Go</span>
                 <span className="tech-pill primary">Kubernetes</span>
               </div>
             </div>
@@ -130,8 +130,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                     <p className="skill-category-desc">Languages I code in daily</p>
                     <div className="skill-tags">
                       <span className="skill-tag">Python</span>
-                      <span className="skill-tag">Go</span>
-                      <span className="skill-tag">Kotlin</span>
                       <span className="skill-tag">TypeScript</span>
                       <span className="skill-tag">SQL</span>
                       <span className="skill-tag">JavaScript</span>
@@ -156,7 +154,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                       <span className="skill-tag">CloudWatch</span>
                       <span className="skill-tag">IAM</span>
                       <span className="skill-tag">Azure</span>
-                      <span className="skill-tag">GCP</span>
                     </div>
                   </div>
                   <div className="skill-category">
@@ -178,7 +175,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                       <span className="skill-tag">MySQL</span>
                       <span className="skill-tag">DynamoDB</span>
                       <span className="skill-tag">DocumentDB</span>
-                      <span className="skill-tag">Redis</span>
                     </div>
                   </div>
                   <div className="skill-category">
@@ -199,7 +195,6 @@ const SimplePortfolio: React.FC<SimplePortfolioProps> = ({
                       <span className="skill-tag">Docker</span>
                       <span className="skill-tag">Kubernetes</span>
                       <span className="skill-tag">GitLab CI/CD</span>
-                      <span className="skill-tag">Jenkins</span>
                       <span className="skill-tag">Terraform</span>
                       <span className="skill-tag">Infrastructure as Code</span>
                     </div>
