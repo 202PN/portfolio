@@ -4,7 +4,7 @@ My portfolio, built with React, TypeScript, and Vite. The default view is a rés
 
 ## 🚀 Deployment Status
 
-**Live Portfolio**: [https://202PN.github.io/portfolio](https://202PN.github.io/portfolio)
+**Live Portfolio**: [https://petenguyen.dev](https://petenguyen.dev)
 
 This portfolio is automatically deployed using GitHub Actions. Every push to the main branch triggers a new deployment.
 
