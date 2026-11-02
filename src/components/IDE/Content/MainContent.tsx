@@ -1,108 +1,60 @@
 import React from 'react';
-import { User, Code, MessageSquare, Github } from 'lucide-react';
+import { User, Briefcase, MessageSquare, Github, Folder } from 'lucide-react';
+import CodeBlock from './CodeBlock';
+import { indent } from './codeFormat';
+import { CONFIG } from '../../../config';
 
-const MainContent: React.FC = () => {
+interface MainContentProps {
+  onTabChange: (tabId: string) => void;
+}
+
+const MainContent: React.FC<MainContentProps> = ({ onTabChange }) => {
   return (
     <div className="space-y-6">
       {/* Introduction Card */}
       <div className="code-card">
         <div className="code-card-header">
           <User size={16} />
-          <span>About Me</span>
+          <span>About me</span>
         </div>
         <div className="code-card-body">
-          <div className="code-block">
-            <div className="code-line">
-              <span className="line-number">1</span>
-              <div className="code-content">
-                <span className="comment"># Hi! I'm Pete - Let me show you what I do</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">2</span>
-              <div className="code-content">
-                <span className="keyword">class</span> <span className="function">SoftwareEngineer</span><span className="bracket">:</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">3</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">def</span> <span className="function">introduction</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">4</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">name</span> <span className="operator">=</span> <span className="string">"Pete Nguyen"</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">5</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">role</span> <span className="operator">=</span> <span className="string">"Software Engineer"</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">6</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">passion</span> <span className="operator">=</span> <span className="string">"Building reliable software solutions"</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">7</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="variable">self</span><span className="operator">.</span><span className="property">years_experience</span> <span className="operator">=</span> <span className="number">3</span>
-              </div>
-            </div>
-          </div>
+          <CodeBlock
+            lines={[
+              <span className="comment"># Hi, I'm Pete. Here's the short version.</span>,
+              <><span className="keyword">class</span> <span className="function">SoftwareEngineer</span><span className="bracket">:</span></>,
+              <>{indent(1)}<span className="keyword">def</span> <span className="function">__init__</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span></>,
+              <>{indent(2)}<span className="variable">self</span><span className="operator">.</span><span className="property">name</span> <span className="operator">=</span> <span className="string">"Pete Nguyen"</span></>,
+              <>{indent(2)}<span className="variable">self</span><span className="operator">.</span><span className="property">role</span> <span className="operator">=</span> <span className="string">"Full-Stack Software Engineer"</span></>,
+              <>{indent(2)}<span className="variable">self</span><span className="operator">.</span><span className="property">years_experience</span> <span className="operator">=</span> <span className="number">3</span></>,
+              <>{indent(2)}<span className="variable">self</span><span className="operator">.</span><span className="property">location</span> <span className="operator">=</span> <span className="string">"{CONFIG.CONTACT.LOCATION}"</span></>,
+              <>{indent(2)}<span className="variable">self</span><span className="operator">.</span><span className="property">focus</span> <span className="operator">=</span> <span className="bracket">[</span><span className="string">"cloud-native apps"</span><span className="operator">,</span> <span className="string">"event-driven systems"</span><span className="operator">,</span> <span className="string">"security by design"</span><span className="bracket">]</span></>,
+              <>{indent(2)}<span className="variable">self</span><span className="operator">.</span><span className="property">education</span> <span className="operator">=</span> <span className="string">"B.S. Cybersecurity, Purdue Global"</span></>,
+              <>{indent(2)}<span className="variable">self</span><span className="operator">.</span><span className="property">veteran</span> <span className="operator">=</span> <span className="keyword">True</span>  <span className="comment"># U.S. Army Sergeant, 2016–2022</span></>
+            ]}
+          />
         </div>
       </div>
 
-      {/* What I Love Doing Card */}
+      {/* Current Work Card */}
       <div className="code-card">
         <div className="code-card-header">
-          <Code size={16} />
-          <span>What I Love Doing</span>
+          <Briefcase size={16} />
+          <span>What I'm working on</span>
         </div>
         <div className="code-card-body">
-          <div className="code-block">
-            <div className="code-line">
-              <span className="line-number">9</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">def</span> <span className="function">what_i_enjoy_building</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">10</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="keyword">return</span> <span className="bracket">[</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">11</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Reliable software"</span><span className="operator">,</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">12</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"User-friendly applications"</span><span className="operator">,</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">13</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"Cloud infrastructure"</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">14</span>
-              <div className="code-content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="bracket">]</span>
-              </div>
-            </div>
-          </div>
+          <CodeBlock
+            start={12}
+            lines={[
+              <>{indent(1)}<span className="keyword">def</span> <span className="function">currently</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span></>,
+              <>{indent(2)}<span className="keyword">return</span> <span className="bracket">{'{'}</span></>,
+              <>{indent(3)}<span className="string">"TickrCom"</span><span className="operator">:</span> <span className="string">"Co-Founder & Full-Stack Engineer"</span><span className="operator">,</span></>,
+              <>{indent(3)}<span className="string">"Two Zero Two Studio"</span><span className="operator">:</span> <span className="string">"Freelance Full-Stack Developer"</span><span className="operator">,</span></>,
+              <>{indent(2)}<span className="bracket">{'}'}</span></>,
+              '',
+              <>{indent(1)}<span className="keyword">def</span> <span className="function">previously</span><span className="bracket">(</span><span className="variable">self</span><span className="bracket">):</span></>,
+              <>{indent(2)}<span className="keyword">return</span> <span className="string">"Southwest Airlines: 10M+ events/day through real-time AWS + Kafka services"</span></>
+            ]}
+          />
         </div>
       </div>
 
@@ -110,25 +62,22 @@ const MainContent: React.FC = () => {
       <div className="code-card">
         <div className="code-card-header">
           <MessageSquare size={16} />
-          <span>Let's Connect</span>
+          <span>Next steps</span>
         </div>
         <div className="code-card-body">
-          <div className="code-block mb-4">
-            <div className="code-line">
-              <span className="line-number">16</span>
-              <div className="code-content">
-                <span className="comment"># Let's build!</span>
-              </div>
-            </div>
-          </div>
           <p className="text-gray-300 mb-4">
-            Let's build together!
+            Open the other files to see my work, experience, and skills, or switch Dev mode off for the plain resume.
           </p>
           <div className="flex gap-3 flex-wrap">
-            <button className="ide-button">
-              View Projects
+            <button type="button" className="ide-button flex items-center gap-2" onClick={() => onTabChange('projects.py')}>
+              <Folder size={16} />
+              Open projects.py
             </button>
-            <a href="https://github.com/202PN" target="_blank" rel="noopener noreferrer" className="ide-button secondary flex items-center gap-2">
+            <button type="button" className="ide-button secondary flex items-center gap-2" onClick={() => onTabChange('contact.py')}>
+              <MessageSquare size={16} />
+              Open contact.py
+            </button>
+            <a href={CONFIG.CONTACT.GITHUB} target="_blank" rel="noopener noreferrer" className="ide-button secondary flex items-center gap-2">
               <Github size={16} />
               GitHub
             </a>

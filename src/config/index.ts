@@ -8,8 +8,8 @@
 export const CONFIG = {
   // Site Information
   SITE: {
-    TITLE: 'Pete Nguyen - Software Engineer Portfolio',
-    DESCRIPTION: 'Software Engineer specializing in modern web technologies. View my projects and experience.',
+    TITLE: 'Pete Nguyen | Full-Stack Software Engineer',
+    DESCRIPTION: 'Full-stack software engineer building secure, cloud-native applications. Co-founder of TickrCom, founder of Two Zero Two Studio, formerly Southwest Airlines, U.S. Army veteran.',
     AUTHOR: 'Pete Nguyen',
     VERSION: '1.0.0'
   },
@@ -19,7 +19,12 @@ export const CONFIG = {
     EMAIL: 'petenguyen96@gmail.com',
     GITHUB: 'https://github.com/202PN',
     LINKEDIN: 'https://www.linkedin.com/in/petehnguyen/',
-    PHONE: null
+    LOCATION: 'West Palm Beach, FL',
+    PHONE: null,
+    // Drop a resume PDF in /public and set this to e.g. 'resume.pdf' to show a download button
+    RESUME_PATH: null as string | null,
+    // Portrait photo in /public (cropped to ~4:5); initials are shown if it fails to load
+    PHOTO_PATH: 'headshot.jpg'
   },
 
   // Social Media
@@ -31,7 +36,7 @@ export const CONFIG = {
 
   // Navigation
   NAVIGATION: {
-    SECTIONS: ['home', 'about', 'experience', 'projects', 'contact'],
+    SECTIONS: ['ventures', 'experience', 'skills', 'contact'],
     SCROLL_OFFSET: 100
   },
 

@@ -1,6 +1,6 @@
 # Pete Nguyen - Software Engineer Portfolio
 
-A modern, interactive portfolio website built with React, TypeScript, and Tailwind CSS. Features an IDE-themed interface that showcases my skills, experience, and projects.
+My portfolio, built with React, TypeScript, and Vite. The default view is a résumé presented as one terminal session over a faint, black "stop screen" backdrop (motion is disabled for visitors who prefer reduced motion); the **Dev mode** switch in the header turns it into an IDE that presents the same content as code.
 
 ## 🚀 Deployment Status
 
@@ -8,7 +8,18 @@ A modern, interactive portfolio website built with React, TypeScript, and Tailwi
 
 This portfolio is automatically deployed using GitHub Actions. Every push to the main branch triggers a new deployment.
 
-**Last Deployment**: August 12, 2025 - Portfolio updates with army picture and improved carousel navigation
+## ✏️ Updating content
+
+All content lives in `src/data/` and `src/config/index.ts`, and both modes read from it:
+
+- `ventures.ts` - TickrCom and Two Zero Two Studio (with client projects)
+- `experience.ts` - Southwest Airlines, MSSA, U.S. Army
+- `skills.ts`, `education.ts` - skills, degrees, certifications
+- `config/index.ts` - contact links, location, résumé download, photo path
+
+**Photo:** add a portrait (about 4:5) at `public/headshot.jpg`. Until it exists, the Let's connect section shows initials.
+
+**Résumé download:** add `public/resume.pdf` and set `RESUME_PATH: 'resume.pdf'` in the config to show a Résumé button in the hero.
 
 ##  Features
 ## Technology Stack
@@ -68,8 +79,10 @@ This portfolio is automatically deployed using GitHub Actions. Every push to the
 portfolio/
 ├── src/
 │   ├── components/          # React components
+│   │   ├── Header.tsx      # Sticky header with section nav and Dev mode switch
 │   │   ├── Hero.tsx        # Hero section component
-│   │   └── IDE/            # IDE-themed components
+│   │   ├── Portfolio/      # Simple-mode sections (ventures, experience, skills, connect)
+│   │   └── IDE/            # Dev-mode IDE components
 │   │       ├── IDEWindow.tsx
 │   │       ├── IDETitleBar.tsx
 │   │       ├── IDENavigation.tsx
@@ -77,9 +90,10 @@ portfolio/
 │   │       ├── IDEStatusBar.tsx
 │   │       └── Content/    # Tab content components
 │   ├── data/               # Static data files
-│   │   ├── projects.ts     # Project information
+│   │   ├── ventures.ts     # TickrCom, Two Zero Two Studio and its clients
 │   │   ├── experience.ts   # Work experience
 │   │   ├── skills.ts       # Skills and technologies
+│   │   ├── education.ts    # Degrees and certifications
 │   │   └── tabs.ts         # IDE navigation tabs
 │   ├── types/              # TypeScript type definitions
 │   ├── utils/              # Utility functions

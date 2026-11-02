@@ -16,14 +16,15 @@ const IDESidebar: React.FC<IDESidebarProps> = ({ activeTab, onTabChange }) => {
         <div className="ide-sidebar-title">Explorer</div>
         <div className="space-y-1">
           {tabs.map((tab) => (
-                              <div
-                    key={tab.id}
-                    className={`ide-sidebar-item flex items-center gap-2 ${activeTab === tab.id ? 'active' : ''}`}
-                    onClick={() => onTabChange(tab.id)}
-                  >
-                    {getTabIcon(tab.icon)}
-                    <span>{tab.name}</span>
-                  </div>
+            <button
+              key={tab.id}
+              type="button"
+              className={`ide-sidebar-item flex items-center gap-2 ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => onTabChange(tab.id)}
+            >
+              {getTabIcon(tab.icon)}
+              <span>{tab.name}</span>
+            </button>
           ))}
         </div>
       </div>
@@ -35,7 +36,7 @@ const IDESidebar: React.FC<IDESidebarProps> = ({ activeTab, onTabChange }) => {
             href={CONFIG.CONTACT.GITHUB} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="ide-sidebar-item flex items-center gap-2 hover:bg-gray-700 transition-colors"
+            className="ide-sidebar-item flex items-center gap-2"
           >
             <Github size={14} />
             <span>View GitHub</span>
@@ -44,14 +45,14 @@ const IDESidebar: React.FC<IDESidebarProps> = ({ activeTab, onTabChange }) => {
             href={CONFIG.CONTACT.LINKEDIN} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="ide-sidebar-item flex items-center gap-2 hover:bg-gray-700 transition-colors"
+            className="ide-sidebar-item flex items-center gap-2"
           >
             <Linkedin size={14} />
             <span>View LinkedIn</span>
           </a>
           <a 
             href={`mailto:${CONFIG.CONTACT.EMAIL}`}
-            className="ide-sidebar-item flex items-center gap-2 hover:bg-gray-700 transition-colors"
+            className="ide-sidebar-item flex items-center gap-2"
           >
             <Mail size={14} />
             <span>Send Email</span>

@@ -1,65 +1,106 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Terminal, ChevronDown, MapPin } from 'lucide-react';
-import { HeroProps } from '../types';
+import { Github, Linkedin, Mail, MapPin, FileText } from 'lucide-react';
+import { CONFIG } from '../config';
+import Prompt from './Prompt';
 
-const Hero: React.FC<HeroProps> = ({ onViewWork }) => {
+const RECORD = [
+  {
+    status: 'running',
+    entries: [
+      { role: 'Co-Founder & Full-Stack Engineer', org: 'TickrCom', when: '2026 – now' },
+      { role: 'Freelance Full-Stack Developer', org: 'Two Zero Two Studio', when: '2026 – now' }
+    ]
+  },
+  {
+    status: 'completed',
+    entries: [
+      { role: 'Associate Software Engineer', org: 'Southwest Airlines', when: '2022 – 2025' },
+      { role: 'Sergeant', org: 'U.S. Army', when: '2016 – 2022' }
+    ]
+  }
+];
+
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/** Formats a date the way a shell prints it on login, e.g. "Mon Nov  2 12:47:03" */
+const loginStamp = (d: Date) => {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '\u00a0');
+  return `${DAYS[d.getDay()]} ${MONTHS[d.getMonth()]} ${day} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+};
+
+const Hero: React.FC = () => {
   return (
-    <section className="hero-section min-h-screen flex items-center justify-center relative">
-      <div className="hero-content max-w-4xl mx-auto px-6 text-center">
-        <div className="hero-badge mb-6">
-          <span className="hero-badge-text">Welcome to my portfolio</span>
-        </div>
-        
-        <h1 className="hero-title mb-6">
-          Hi, I'm <span className="hero-name">Pete</span>
-        </h1>
-        
-        <p className="hero-subtitle mb-8">
-          I'm a <strong>Software Engineer</strong> who builds reliable software for personal, business, and enterprise needs.
-        </p>
-        
-        <div className="hero-location mb-8">
-          <div className="flex items-center justify-center gap-2 text-gray-300 mb-2">
-            <MapPin size={18} className="text-gray-400" />
-            <span className="text-sm font-medium">Washington D.C. • West Palm Beach, Florida</span>
+    <section className="hero" id="top">
+      <div className="hero-inner">
+        <div className="hero-intro">
+          <p className="login-line" aria-hidden="true">
+            Last login: {loginStamp(new Date())} on ttys001
+          </p>
+          <Prompt command="whoami" typed />
+          <h1 className="hero-name glitch" data-text="Pete Nguyen">
+            Pete Nguyen
+          </h1>
+          <p className="hero-role">
+            <span className="hero-role-mark" aria-hidden="true">&gt;</span> Full-stack software engineer
+          </p>
+          <p className="hero-lede">
+            I build secure, cloud-native software for enterprise teams, startups, and small businesses.
+          </p>
+
+          <div className="hero-actions">
+            <a href={`mailto:${CONFIG.CONTACT.EMAIL}`} className="btn btn-primary">
+              <Mail size={17} aria-hidden="true" />
+              Email me
+            </a>
+            <a href={CONFIG.CONTACT.LINKEDIN} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+              <Linkedin size={17} aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a href={CONFIG.CONTACT.GITHUB} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+              <Github size={17} aria-hidden="true" />
+              GitHub
+            </a>
+            {CONFIG.CONTACT.RESUME_PATH && (
+              <a href={`${import.meta.env.BASE_URL}${CONFIG.CONTACT.RESUME_PATH}`} className="btn btn-secondary" download>
+                <FileText size={17} aria-hidden="true" />
+                Resume
+              </a>
+            )}
           </div>
-          <div className="flex items-center justify-center gap-2 text-gray-300">
-            <Mail size={18} className="text-gray-400" />
-            <span className="text-sm font-medium">petenguyen96@gmail.com</span>
+
+          <p className="hero-meta">
+            <MapPin size={15} aria-hidden="true" />
+            {CONFIG.CONTACT.LOCATION}. B.S. in Cybersecurity, U.S. Army veteran.
+          </p>
+        </div>
+
+        <aside className="record term-window" aria-label="Career at a glance">
+          <div className="term-bar" aria-hidden="true">
+            <span className="term-title">ps --career</span>
           </div>
-        </div>
-        
-        <div className="hero-actions mb-12">
-          <button 
-            className="hero-btn hero-btn-primary"
-            onClick={onViewWork}
-          >
-            <Terminal size={20} />
-            View My Work
-          </button>
-        </div>
-        
-        <div className="hero-social">
-          <a href="https://github.com/202PN" target="_blank" rel="noopener noreferrer" className="hero-social-link">
-            <Github size={24} />
-          </a>
-          <a href="https://www.linkedin.com/in/petehnguyen" target="_blank" rel="noopener noreferrer" className="hero-social-link">
-            <Linkedin size={24} />
-          </a>
-          <a href="mailto:petenguyen96@gmail.com" className="hero-social-link">
-            <Mail size={24} />
-          </a>
-        </div>
+          <div className="term-body">
+            {RECORD.map((group) => (
+              <div key={group.status} className="record-group">
+                <h2 className={`record-heading is-${group.status}`}>
+                  <span className="record-dot" aria-hidden="true" />
+                  {group.status === 'running' ? 'Now' : 'Before'}
+                </h2>
+                <ul className="record-list">
+                  {group.entries.map((entry) => (
+                    <li key={entry.org} className="record-entry">
+                      <span className="record-org">{entry.org}</span>
+                      <span className="record-role">{entry.role}</span>
+                      <span className="record-when">{entry.when}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </aside>
       </div>
-      
-      {/* Scroll Indicator */}
-      <div className="hero-scroll-indicator">
-        <ChevronDown size={24} className="animate-bounce" />
-        <span>Scroll to explore</span>
-      </div>
-      
-      {/* Transition Effect */}
-      <div className="hero-transition"></div>
     </section>
   );
 };

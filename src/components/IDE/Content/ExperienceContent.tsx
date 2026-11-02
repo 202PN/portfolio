@@ -1,6 +1,24 @@
 import React from 'react';
-import { Briefcase, User } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 import { experience } from '../../../data/experience';
+import { ventures } from '../../../data/ventures';
+import CodeBlock from './CodeBlock';
+import { indent } from './codeFormat';
+
+// Current ventures first, then past roles, all in one chronological list
+const roles = [
+  ...ventures.map((v) => ({
+    title: v.role,
+    company: v.name,
+    period: v.period,
+    summary: v.summary,
+    highlights: v.highlights.length > 0 ? v.highlights : (v.clients ?? []).map((c) => `${c.client}: ${c.summary}`),
+    tech: v.tech
+  })),
+  ...experience
+];
+
+const LINES_PER_ROLE = 5;
 
 const ExperienceContent: React.FC = () => {
   return (
@@ -9,85 +27,55 @@ const ExperienceContent: React.FC = () => {
       <div className="code-card">
         <div className="code-card-header">
           <Briefcase size={16} />
-          <span>My Professional Journey</span>
+          <span>Work experience</span>
         </div>
         <div className="code-card-body">
-          <div className="code-block mb-4">
-            <div className="code-line">
-              <span className="line-number">1</span>
-              <div className="code-content">
-                <span className="comment"># Here's where I've worked and what I've accomplished</span>
-              </div>
-            </div>
-            <div className="code-line">
-              <span className="line-number">2</span>
-              <div className="code-content">
-                <span className="keyword">work_experience</span> <span className="operator">=</span> <span className="bracket">[</span>
-              </div>
-            </div>
-          </div>
+          <CodeBlock
+            lines={[
+              <span className="comment"># Most recent first</span>,
+              <><span className="keyword">work_experience</span> <span className="operator">=</span> <span className="bracket">[</span></>
+            ]}
+          />
         </div>
       </div>
 
       {/* Individual Experience Cards */}
-      {experience.map((job, index) => (
-        <div key={index} className="code-card">
+      {roles.map((job, index) => (
+        <div key={job.company} className="code-card">
           <div className="code-card-header">
             <Briefcase size={16} />
-            <span>{job.title} at {job.company}</span>
+            <span>{job.title}, {job.company}</span>
           </div>
           <div className="code-card-body">
-            <div className="code-block mb-4">
-              <div className="code-line">
-                <span className="line-number">{4 + index * 6}</span>
-                <div className="code-content">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span className="bracket">{'{'}</span>
-                </div>
-              </div>
-              <div className="code-line">
-                <span className="line-number">{5 + index * 6}</span>
-                <div className="code-content">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"role"</span><span className="operator">:</span> <span className="string">"{job.title}"</span><span className="operator">,</span>
-                </div>
-              </div>
-              <div className="code-line">
-                <span className="line-number">{6 + index * 6}</span>
-                <div className="code-content">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="property">"company"</span><span className="operator">:</span> <span className="string">"{job.company}"</span><span className="operator">,</span>
-                </div>
-              </div>
-              <div className="code-line">
-                <span className="line-number">{7 + index * 6}</span>
-                <div className="code-content">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"when"</span><span className="operator">:</span> <span className="string">"{job.period}"</span>
-                </div>
-              </div>
-              <div className="code-line">
-                <span className="line-number">{8 + index * 6}</span>
-                <div className="code-content">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span className="bracket">{'}'}</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mb-4">
-              <h4 className="text-white font-semibold mb-2">{job.period}</h4>
-              <p className="text-gray-300 mb-3">{job.description}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-400 mb-2">Technologies used:</p>
-              <div className="flex flex-wrap gap-2">
-                {job.tech.map((tech, techIndex) => (
-                  <span key={techIndex} className="tech-badge">
-                    {tech}
-                  </span>
-                ))}
-              </div>
+            <CodeBlock
+              className="mb-4"
+              start={3 + index * LINES_PER_ROLE}
+              lines={[
+                <>{indent(1)}<span className="bracket">{'{'}</span></>,
+                <>{indent(2)}<span className="string">"role"</span><span className="operator">:</span> <span className="string">"{job.title}"</span><span className="operator">,</span></>,
+                <>{indent(2)}<span className="string">"company"</span><span className="operator">:</span> <span className="string">"{job.company}"</span><span className="operator">,</span></>,
+                <>{indent(2)}<span className="string">"when"</span><span className="operator">:</span> <span className="string">"{job.period}"</span></>,
+                <>{indent(1)}<span className="bracket">{'}'}</span><span className="operator">,</span></>
+              ]}
+            />
+
+            <p className="text-gray-300 mb-3">{job.summary}</p>
+            <ul className="ide-list mb-4">
+              {job.highlights.map((h) => (
+                <li key={h}>{h}</li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-2">
+              {job.tech.map((tech) => (
+                <span key={tech} className="tech-badge">{tech}</span>
+              ))}
             </div>
           </div>
         </div>
       ))}
+
+      <CodeBlock start={3 + roles.length * LINES_PER_ROLE} lines={[<span className="bracket">]</span>]} />
     </div>
   );
 };

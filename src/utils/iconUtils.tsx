@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Code, User, Briefcase, Folder, MessageSquare } from 'lucide-react';
 
 export const getTabIcon = (iconName: string, size: number = 14) => {

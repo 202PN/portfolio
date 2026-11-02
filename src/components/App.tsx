@@ -1,69 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { Hero, IDESection, SimplePortfolio, HangarStackModal } from './index';
+import { Header, IDESection, SimplePortfolio, Footer, CrashScreen } from './index';
 import { getActiveSection } from '../utils';
 import { CONFIG } from '../config';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(CONFIG.IDE.DEFAULT_TAB);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeTab, setActiveTab] = useState<string>(CONFIG.IDE.DEFAULT_TAB);
+  const [activeSection, setActiveSection] = useState('');
   const [isDevMode, setIsDevMode] = useState(false);
-  const [showHangarStackModal, setShowHangarStackModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentSection = getActiveSection([...CONFIG.NAVIGATION.SECTIONS]);
-      setActiveSection(currentSection);
+      const sections = [...CONFIG.NAVIGATION.SECTIONS];
+      // The last section is too short to reach the top, so treat the page bottom as being in it
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      setActiveSection(atBottom ? sections[sections.length - 1] : getActiveSection(sections));
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isDevMode]);
 
-  const handleViewWork = () => {
-    document.getElementById('simple-portfolio')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // The page theme follows the mode: light for the recruiter view, dark for dev mode
+  useEffect(() => {
+    document.documentElement.dataset.mode = isDevMode ? 'dev' : 'simple';
+  }, [isDevMode]);
 
   const handleToggleDevMode = (mode: boolean) => {
     setIsDevMode(mode);
-  };
-
-  const handleTabChange = (tabId: string) => {
-    setActiveTab(tabId as any);
-  };
-
-  const handleShowHangarStackModal = () => {
-    setShowHangarStackModal(true);
-  };
-
-  const handleCloseHangarStackModal = () => {
-    setShowHangarStackModal(false);
+    window.scrollTo({ top: 0 });
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <Hero onViewWork={handleViewWork} />
-      
-      {/* IDE Section */}
-      <IDESection 
-        isDevMode={isDevMode} 
-        activeTab={activeTab} 
-        onTabChange={handleTabChange}
-        onToggleDevMode={handleToggleDevMode}
-      />
-      
-      {/* Simple Portfolio Section */}
-      <SimplePortfolio 
-        isDevMode={isDevMode}
-        onToggleDevMode={handleToggleDevMode}
-        onShowHangarStackModal={handleShowHangarStackModal}
-      />
-      
-      {/* HangarStack Project Modal */}
-      <HangarStackModal 
-        isOpen={showHangarStackModal}
-        onClose={handleCloseHangarStackModal}
-      />
+    // The whole site is one terminal window; the header is its title bar
+    <div className="terminal">
+      <CrashScreen />
+      <a href={isDevMode ? '#ide-section' : '#ventures'} className="skip-link">
+        Skip to content
+      </a>
+      <Header isDevMode={isDevMode} activeSection={activeSection} onToggleDevMode={handleToggleDevMode} />
+      {isDevMode ? (
+        <IDESection activeTab={activeTab} onTabChange={setActiveTab} />
+      ) : (
+        <SimplePortfolio />
+      )}
+      <Footer />
     </div>
   );
 };

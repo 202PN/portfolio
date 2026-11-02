@@ -39,7 +39,7 @@ npm run preview
 - Components: PascalCase (e.g., `Hero.tsx`)
 - Utilities: camelCase (e.g., `scrollUtils.ts`)
 - Types: PascalCase (e.g., `Project.ts`)
-- Data: camelCase (e.g., `projects.ts`)
+- Data: camelCase (e.g., `ventures.ts`)
 
 ## Adding New Features
 

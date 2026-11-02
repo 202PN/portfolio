@@ -1,8 +1,13 @@
 // Main App Component
 export { default as App } from './App';
 
-// Hero Section
+// Page chrome
+export { default as Header } from './Header';
 export { default as Hero } from './Hero';
+export { default as Footer } from './Footer';
+export { default as Prompt } from './Prompt';
+export { default as CrashScreen } from './CrashScreen';
+export { default as LocationSign } from './LocationSign';
 
 // IDE Components
 export { default as IDESection } from './IDE/IDESection';
@@ -21,7 +26,3 @@ export { default as ContactContent } from './IDE/Content/ContactContent';
 
 // Portfolio Components
 export { default as SimplePortfolio } from './Portfolio/SimplePortfolio';
-export { default as PortfolioCard } from './Portfolio/PortfolioCard';
-
-// Modal Components
-export { default as HangarStackModal } from './Modals/HangarStackModal';

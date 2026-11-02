@@ -1,19 +1,38 @@
 /**
  * Portfolio Project Types
- * 
+ *
  * This file contains all TypeScript interfaces and types used throughout the portfolio application.
  * Each interface is designed to be reusable and maintainable.
  */
 
 /**
- * Project information interface
+ * Client engagement delivered through the freelance studio
  */
-export interface Project {
-  title: string;
-  description: string;
+export interface ClientProject {
+  client: string;
+  period: string;
+  url?: string;
+  summary: string;
+  highlights: string[];
   tech: string[];
-  github: string;
-  live: string;
+}
+
+/**
+ * Venture (company I founded or run) interface
+ */
+export interface Venture {
+  id: string;
+  name: string;
+  role: string;
+  period: string;
+  location: string;
+  url: string;
+  urlLabel: string;
+  tagline: string;
+  summary: string;
+  highlights: string[];
+  tech: string[];
+  clients?: ClientProject[];
 }
 
 /**
@@ -22,19 +41,37 @@ export interface Project {
 export interface Experience {
   title: string;
   company: string;
+  location: string;
   period: string;
-  description: string;
+  summary: string;
+  highlights: string[];
   tech: string[];
 }
 
 /**
- * Skills and technologies interface
+ * Skills grouped by category, in display order
  */
-export interface Skills {
-  Frontend: string[];
-  Backend: string[];
-  Database: string[];
-  Tools: string[];
+export interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
+/**
+ * Degree interface
+ */
+export interface Degree {
+  degree: string;
+  school: string;
+  date: string;
+}
+
+/**
+ * Certification or clearance interface
+ */
+export interface Certification {
+  name: string;
+  issuer: string;
+  date: string;
 }
 
 /**
@@ -47,35 +84,15 @@ export interface Tab {
 }
 
 /**
- * Contact form interface
- */
-export interface ContactForm {
-  name: string;
-  email: string;
-  message: string;
-}
-
-/**
  * Component props interfaces
  */
-export interface HeroProps {
-  onViewWork: () => void;
+export interface HeaderProps {
+  isDevMode: boolean;
+  activeSection: string;
+  onToggleDevMode: (mode: boolean) => void;
 }
 
 export interface IDESectionProps {
-  isDevMode: boolean;
   activeTab: string;
   onTabChange: (tabId: string) => void;
-  onToggleDevMode: (mode: boolean) => void;
-}
-
-export interface SimplePortfolioProps {
-  isDevMode: boolean;
-  onToggleDevMode: (mode: boolean) => void;
-  onShowHangarStackModal: () => void;
-}
-
-export interface HangarStackModalProps {
-  isOpen: boolean;
-  onClose: () => void;
 }

@@ -10,16 +10,19 @@ interface IDENavigationProps {
 const IDENavigation: React.FC<IDENavigationProps> = ({ activeTab, onTabChange }) => {
   return (
     <div className="ide-nav">
-      <div className="ide-nav-tabs">
+      <div className="ide-nav-tabs" role="tablist" aria-label="Files">
         {tabs.map((tab) => (
-                      <div
-              key={tab.id}
-              className={`ide-nav-tab ${activeTab === tab.id ? 'active' : ''}`}
-              onClick={() => onTabChange(tab.id)}
-            >
-              {getTabIcon(tab.icon)}
-              <span>{tab.name}</span>
-            </div>
+          <button
+            key={tab.id}
+            type="button"
+            role="tab"
+            aria-selected={activeTab === tab.id}
+            className={`ide-nav-tab ${activeTab === tab.id ? 'active' : ''}`}
+            onClick={() => onTabChange(tab.id)}
+          >
+            {getTabIcon(tab.icon)}
+            <span>{tab.name}</span>
+          </button>
         ))}
       </div>
     </div>

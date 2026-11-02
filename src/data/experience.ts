@@ -2,24 +2,46 @@ import { Experience } from '../types';
 
 export const experience: Experience[] = [
   {
-    title: "Associate Software Engineer",
-    company: "Southwest Airlines",
-    period: "2022 - 2025",
-    description: "Led development of mission-critical passenger reservation and flight operations platforms serving 130M+ annual passengers and processing $25B+ revenue through high-performance, cloud-native systems. Engineered high-throughput event processing system handling 10M+ real-time events daily with Python-based logic, enabling sub-100ms response times for passenger data and flight operations.",
-    tech: ["Python", "AWS Lambda", "DynamoDB", "API Gateway", "Step Functions", "Apache Kafka", "GitLab CI/CD", "CloudFormation", "Docker"]
+    title: 'Associate Software Engineer',
+    company: 'Southwest Airlines',
+    location: 'Dallas, TX',
+    period: 'Jun 2022 – Apr 2025',
+    summary:
+      'Built and operated the cloud services behind real-time reservations and flight operations, at a scale of millions of transactions a day.',
+    highlights: [
+      'Designed and implemented custom event processing logic for a high-throughput complex event processing (CEP) system handling 10M+ passenger and flight-operations events daily.',
+      'Developed Python applications on AWS (API Gateway, Step Functions, DynamoDB, DocumentDB, SNS/SQS) powering real-time reservation systems used by internal consumers across millions of daily transactions.',
+      'Replaced manual releases with automated GitLab CI/CD pipelines for builds, testing, and deployments, executing 25 QA and production deployments with zero downtime.',
+      'Built serverless Python functions for data transformation, event generation, and rule processing, packaged as container images in Amazon ECR and integrated with Kafka (Confluent Cloud).',
+      'Diagnosed and resolved deployment and runtime failures across GitLab CI/CD, CloudFormation stacks, and Python service code, tracing root causes through CloudWatch logs and metrics.',
+      'Authored the application DOU and runbooks covering architecture, workflows, and troubleshooting, reducing engineer onboarding time by 50%.',
+      'Automated daily monitoring reports on system health, application performance, and data processing metrics for proactive issue detection.'
+    ],
+    tech: ['Python', 'AWS Lambda', 'API Gateway', 'Step Functions', 'DynamoDB', 'DocumentDB', 'SNS/SQS', 'Kafka', 'GitLab CI/CD', 'CloudFormation']
   },
   {
-    title: "Cloud Application Developer Student",
-    company: "Microsoft Software and Systems Academy",
-    period: "2022", 
-    description: "Instructed in cloud application development and learned to design, write, build, and support applications and programs. Leveraged fundamental skills in C#, SQL, CSS, HTML, and object-oriented programming. Built, modified, and ran 100 queries against T-SQL databases via SQL Server Management Studio for data analysis and interpretation.",
-    tech: ["C#", "SQL", "CSS", "HTML", "ASP.NET MVC", "Azure", "T-SQL", "SQL Server Management Studio"]
+    title: 'Cloud Application Developer',
+    company: 'Microsoft Software & Systems Academy',
+    location: 'Columbus, GA',
+    period: '2022',
+    summary: 'A 17-week, project-based program run as a simulated Agile team.',
+    highlights: [
+      'Built full-stack C#/.NET applications on Azure with SQL Server and API-based backends.',
+      'Practiced debugging, algorithm design, CI/CD, and cloud deployment on real-world scenarios.'
+    ],
+    tech: ['C#', '.NET', 'Azure', 'SQL Server']
   },
   {
-    title: "Army Radiology Technology Sergeant",
-    company: "Martin Army Community Hospital, MEDCOM (Army Medical Command)",
-    period: "2016 - 2022",
-    description: "2021 Regional Health Command-Atlantic Soldier of the Year. 2021 Martin Community Hospital Best Leader. 2021 Martin Community Hospital Soldier of the Year. Managed mission-critical healthcare technology operations serving 94K+ beneficiaries with $2M+ annual budget responsibility and zero-tolerance system requirements.",
-    tech: ["Healthcare Technology", "Leadership", "Operations Management", "Budget Management", "Team Leadership"]
+    title: 'Radiology Technologist, Sergeant',
+    company: 'United States Army',
+    location: 'Various locations',
+    period: '2016 – 2022',
+    summary:
+      'Managed digital imaging and data systems with strict accuracy, compliance, and secure handling of sensitive medical information.',
+    highlights: [
+      'Regional Health Command Atlantic Soldier of the Year (2021).',
+      'Martin Army Community Hospital Soldier of the Year and Best Leader (2020).'
+    ],
+    tech: ['Leadership', 'Compliance', 'Medical imaging systems']
   }
 ];

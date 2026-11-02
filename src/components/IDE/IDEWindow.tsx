@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tab } from '../../types';
 import IDETitleBar from './IDETitleBar';
 import IDENavigation from './IDENavigation';
 import IDESidebar from './IDESidebar';
@@ -13,19 +12,19 @@ interface IDEWindowProps {
 
 const IDEWindow: React.FC<IDEWindowProps> = ({ activeTab, onTabChange, children }) => {
   return (
-    <div className="ide-window" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="ide-window">
       {/* Title Bar */}
       <IDETitleBar />
       
       {/* Navigation Tabs */}
       <IDENavigation activeTab={activeTab} onTabChange={onTabChange} />
       
-      <div className="flex flex-1" style={{ display: 'flex', flex: '1' }}>
+      <div className="flex flex-1 min-h-0">
         {/* Sidebar */}
         <IDESidebar activeTab={activeTab} onTabChange={onTabChange} />
         
         {/* Main Content */}
-        <div className="ide-content flex-1" style={{ flex: '1', padding: '20px', overflowY: 'auto' }}>
+        <div className="ide-content">
           {children}
         </div>
       </div>
